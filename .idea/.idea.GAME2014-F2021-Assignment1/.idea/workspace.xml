@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="59dc5e11-4ffd-49bd-a879-6c3e79f3af20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GAME2014-F2021-Assignment1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GAME2014-F2021-Assignment1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2029304.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2029304.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/bomb-182-615821.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/bomb-182-615821.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,6 +77,11 @@
       <workItem from="1632964811037" duration="35000" />
       <workItem from="1632965945942" duration="6637000" />
       <workItem from="1633044813729" duration="17000" />
+      <workItem from="1633102413353" duration="641000" />
+      <workItem from="1633145873685" duration="697000" />
+      <workItem from="1633146591646" duration="43000" />
+      <workItem from="1633187238412" duration="16331000" />
+      <workItem from="1633222213484" duration="2065000" />
     </task>
     <servers />
   </component>
