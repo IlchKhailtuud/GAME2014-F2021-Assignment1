@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59dc5e11-4ffd-49bd-a879-6c3e79f3af20" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Art/New folder.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GAME2014-F2021-Assignment1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GAME2014-F2021-Assignment1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Animation/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animation/Player.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Animation/down.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animation/down.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Animation/down.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animation/down.anim.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Animation/up.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animation/up.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Animation/up.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animation/up.anim.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/DestructibleBrick.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/DestructibleBrick.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HardBrick.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HardBrick.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +86,7 @@
       <workItem from="1633222213484" duration="2801000" />
       <workItem from="1633298112333" duration="240000" />
       <workItem from="1634653878847" duration="5954000" />
+      <workItem from="1634668497491" duration="1716000" />
     </task>
     <servers />
   </component>
