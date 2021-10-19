@@ -9,13 +9,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = System.Random;
 
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField] 
-    private GameObject hardBrick, destructibleBrick;
+    private GameObject hardBrick, destructibleBrick, portalPre, propPre;
     
     [SerializeField]
     private int colCoordinate;
@@ -27,11 +29,14 @@ public class MapGenerator : MonoBehaviour
     private int destructibleBrickNum;
     
     private List<Vector2> emptyLocationList = new List<Vector2>();
+    private List<Vector2> destructibleWallList = new List<Vector2>();
     private void Awake()
     {
         GenerateHardWall();
         GetAllEmptyLocations();
         GenerateDestructibleWall();
+        CreatePortal();
+        CreateProp();
     }
 
     private void GenerateHardWall()
@@ -40,24 +45,24 @@ public class MapGenerator : MonoBehaviour
         {
             for (int j = -rowCoordinate; j <= rowCoordinate; j += 2)
             {
-                BrickInstantiate(hardBrick, new Vector2(i, j));
+                GOInstantiate(hardBrick, new Vector2(i, j));
             }
         }
         
         for (int i = -(colCoordinate + 2); i <= colCoordinate + 2; ++i)
         {
-            BrickInstantiate(hardBrick,new Vector2(i, -(rowCoordinate + 2)));
-            BrickInstantiate(hardBrick, new Vector2(i, rowCoordinate + 2));
+            GOInstantiate(hardBrick,new Vector2(i, -(rowCoordinate + 2)));
+            GOInstantiate(hardBrick, new Vector2(i, rowCoordinate + 2));
         }
 
         for (int j = -(rowCoordinate + 2); j <= rowCoordinate + 2; ++j)
         {
-            BrickInstantiate(hardBrick, new Vector3(-(colCoordinate + 2), j));
-            BrickInstantiate(hardBrick, new Vector3(colCoordinate + 2, j));
+            GOInstantiate(hardBrick, new Vector3(-(colCoordinate + 2), j));
+            GOInstantiate(hardBrick, new Vector3(colCoordinate + 2, j));
         }
     }
 
-    private void BrickInstantiate(GameObject go, Vector2 vec) 
+    private void GOInstantiate(GameObject go, Vector2 vec) 
     {
         Instantiate(go, vec, quaternion.identity);
     }
@@ -88,7 +93,28 @@ public class MapGenerator : MonoBehaviour
         for (int i = 0; i < destructibleBrickNum; ++i)
         {
             var ran = UnityEngine.Random.Range(0, emptyLocationList.Count);
-            BrickInstantiate(destructibleBrick, emptyLocationList[ran]);
+            GOInstantiate(destructibleBrick, emptyLocationList[ran]);
+            destructibleWallList.Add(emptyLocationList[ran]);
+            emptyLocationList.RemoveAt(ran);
+        }
+    }
+
+    private void CreatePortal()
+    {
+        int index = UnityEngine.Random.Range(0, destructibleWallList.Count);
+        GOInstantiate(portalPre, destructibleWallList[index]);
+        destructibleWallList.RemoveAt(index);
+    }
+
+    private void CreateProp()
+    {
+        int count = UnityEngine.Random.Range(0, 2 + (int)(destructibleWallList.Count * 0.05f));
+
+        for (int i = 0; i < count; i++)
+        {
+            int index = UnityEngine.Random.Range(0, destructibleWallList.Count);
+            GOInstantiate(propPre, destructibleWallList[index]);
+            destructibleWallList.RemoveAt(index);
         }
     }
 }
