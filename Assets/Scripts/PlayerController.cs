@@ -32,6 +32,5 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("Vertical", v);
         
         rb2d.MovePosition(transform.position + new Vector3(h, v) * speed);
-        
     }
 }
