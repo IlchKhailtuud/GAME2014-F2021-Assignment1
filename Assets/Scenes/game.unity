@@ -974,9 +974,11 @@ MonoBehaviour:
   destructibleBrick: {fileID: 3630128046267802617, guid: eef99399bc05ede4388bc4018b76f937, type: 3}
   portalPre: {fileID: 323306575445985468, guid: d8327fe5d7ba9c34e93d790639072534, type: 3}
   propPre: {fileID: 1651831677401928102, guid: 0a426be62f4c40d42b2c50935edb67c2, type: 3}
+  enemyPre: {fileID: 1702810165159907086, guid: dfc33227184763c40a4bc0955205e9c8, type: 3}
   colCoordinate: 6
   rowCoordinate: 3
   destructibleBrickNum: 15
+  enemyCount: 4
 --- !u!4 &1645125509
 Transform:
   m_ObjectHideFlags: 0

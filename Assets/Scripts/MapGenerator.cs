@@ -17,7 +17,7 @@ using Random = System.Random;
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField] 
-    private GameObject hardBrick, destructibleBrick, portalPre, propPre;
+    private GameObject hardBrick, destructibleBrick, portalPre, propPre, enemyPre;
     
     [SerializeField]
     private int colCoordinate;
@@ -27,6 +27,9 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] 
     private int destructibleBrickNum;
+
+    [SerializeField] 
+    private int enemyCount;
     
     private List<Vector2> emptyLocationList = new List<Vector2>();
     private List<Vector2> destructibleWallList = new List<Vector2>();
@@ -38,6 +41,7 @@ public class MapGenerator : MonoBehaviour
         GenerateDestructibleWall();
         CreatePortal();
         CreateProp();
+        SpawnEnemy();
     }
     
     private void GenerateHardWall()
@@ -123,8 +127,20 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    private void SpawnEnemy()
+    {
+        for (int i = 0; i < enemyCount; i++)
+        {
+            var ran = UnityEngine.Random.Range(0, emptyLocationList.Count);
+            GOInstantiate(enemyPre, emptyLocationList[ran]);
+            emptyLocationList.RemoveAt(ran);
+        }
+    }
+
     public Vector2 getPlayerSpawnPos()
     {
         return new Vector2(-(colCoordinate + 1), rowCoordinate + 1);
     }
+    
+    
 }
