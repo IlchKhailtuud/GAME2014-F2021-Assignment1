@@ -30,7 +30,8 @@ public class MapGenerator : MonoBehaviour
     
     private List<Vector2> emptyLocationList = new List<Vector2>();
     private List<Vector2> destructibleWallList = new List<Vector2>();
-    private void Awake()
+
+    public void InitMap()
     {
         GenerateHardWall();
         GetAllEmptyLocations();
@@ -38,7 +39,7 @@ public class MapGenerator : MonoBehaviour
         CreatePortal();
         CreateProp();
     }
-
+    
     private void GenerateHardWall()
     {
         for (int i = -colCoordinate; i <= colCoordinate; i += 2)
@@ -86,6 +87,10 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
+        
+        emptyLocationList.Remove(new Vector2(-(colCoordinate + 1), rowCoordinate + 1));
+        emptyLocationList.Remove(new Vector2(-(colCoordinate + 1), rowCoordinate));
+        emptyLocationList.Remove(new Vector2(-(colCoordinate), rowCoordinate + 1));
     }
 
     private void GenerateDestructibleWall()
@@ -116,5 +121,10 @@ public class MapGenerator : MonoBehaviour
             GOInstantiate(propPre, destructibleWallList[index]);
             destructibleWallList.RemoveAt(index);
         }
+    }
+
+    public Vector2 getPlayerSpawnPos()
+    {
+        return new Vector2(-(colCoordinate + 1), rowCoordinate + 1);
     }
 }
