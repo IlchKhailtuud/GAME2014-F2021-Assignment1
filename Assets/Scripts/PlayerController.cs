@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
     private SpriteRenderer sr;
     private Color color;
+    private bool canTakeDamage = true;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -48,7 +49,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (!canTakeDamage) return;
+        
+        if (other.CompareTag("Enemy") || other.CompareTag("BombEffect"))
         {
             liveCount--;
             StartCoroutine("ShowDamageEffect", 2f);
@@ -57,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ShowDamageEffect(float durationCount)
     {
+        canTakeDamage = false;
         for (int i = 0; i < durationCount * 2; i++)
         {
             color.a = 0;
@@ -66,6 +70,7 @@ public class PlayerController : MonoBehaviour
             sr.color = color;
             yield return new WaitForSeconds(0.25f);
         }
+        canTakeDamage = true;
     }
 
     private void placeBomb()

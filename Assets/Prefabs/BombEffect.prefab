@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 5592035854891678911}
   - component: {fileID: 5592035854891678910}
   - component: {fileID: 5592035854891678909}
+  - component: {fileID: 8929545527833001560}
   - component: {fileID: -3503917308916289998}
   m_Layer: 0
   m_Name: BombEffect
-  m_TagString: Untagged
+  m_TagString: BombEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,6 +122,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!50 &8929545527833001560
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592035854891678905}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &-3503917308916289998
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -77,6 +77,11 @@ public class EnemyController : MonoBehaviour
             
             ChangeMoveDirection();
         }
+
+        if (other.CompareTag("BombEffect"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
