@@ -14,7 +14,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = System.Random;
 
-public class MapGenerator : MonoBehaviour
+public class MapGenerator: MonoBehaviour
 {
     [SerializeField] 
     private GameObject hardBrick, destructibleBrick, portalPre, propPre, enemyPre;
@@ -34,22 +34,6 @@ public class MapGenerator : MonoBehaviour
     private List<Vector2> emptyLocationList = new List<Vector2>();
     private List<Vector2> destructibleBrickList = new List<Vector2>();
     private List<Vector2> hardBrickList = new List<Vector2>();
-
-    public static MapGenerator instance;
-    private MapGenerator()
-    {
-        
-    }
-
-    //making MapGenerator singleton
-    public static MapGenerator Instance()
-    {
-        if (instance == null)
-        {
-            instance = new MapGenerator();
-        }
-        return instance;
-    }
     
     public void InitMap()
     {

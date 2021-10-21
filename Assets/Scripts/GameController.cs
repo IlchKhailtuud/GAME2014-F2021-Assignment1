@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -8,25 +9,25 @@ public class GameController : MonoBehaviour
     [SerializeField] 
     private GameObject playerPre;
 
+    [SerializeField] 
+    private MapGenerator mapGenerator;
+    
     public static GameController instance;
 
-    private GameController()
+    private void Awake()
     {
-    }
-    
-    void Start()
-    {
-        MapGenerator.instance.InitMap();
-        Instantiate(playerPre, MapGenerator.instance.getPlayerSpawnPos(), quaternion.identity);
+        instance = this;
     }
 
-    //making GameController singleton
-    public static GameController Instance()
+    void Start()
     {
-        if (instance == null)
-        {
-            instance = new GameController();
-        }
-        return instance;
+        mapGenerator = GetComponent<MapGenerator>();
+        mapGenerator.InitMap();
+        Instantiate(playerPre, mapGenerator.getPlayerSpawnPos(), quaternion.identity);
+    }
+
+    public bool isHardBrick(Vector2 pos)
+    {
+        return mapGenerator.isHardBrick(pos);
     }
 }

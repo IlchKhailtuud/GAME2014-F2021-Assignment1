@@ -31,7 +31,7 @@ public class BombBehaviour : MonoBehaviour
             Vector2 pos = (Vector2)transform.position + explosionDirection * i;
 
             //stop spawning explosion effect once hits the hard brick
-            if (MapGenerator.instance.isHardBrick(pos)) break;
+            if (GameController.instance.isHardBrick(pos)) break;
             Instantiate(explosionEffect, pos, quaternion.identity);
         }
     }
