@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BombBehaviour : MonoBehaviour
 {
-    public GameObject explosionEffect;
+    [SerializeField]
+    public GameObject bombEffect;
+    
     private int range;
-    public void Init(int range, int delayTime)
+    public void Init(int range, float delayTime)
     {
         this.range = range;
         StartCoroutine("ExplosionDelay", delayTime);
     }
 
-    IEnumerator ExplosionDelay(int delayTime)
+    IEnumerator ExplosionDelay(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        Instantiate(explosionEffect, transform.position, quaternion.identity);
+        Instantiate(bombEffect, transform.position, quaternion.identity);
         SpawnExplosion(Vector2.left);
         SpawnExplosion(Vector2.right);
         SpawnExplosion(Vector2.up);
@@ -32,7 +35,7 @@ public class BombBehaviour : MonoBehaviour
 
             //stop spawning explosion effect once hits the hard brick
             if (GameController.instance.isHardBrick(pos)) break;
-            Instantiate(explosionEffect, pos, quaternion.identity);
+            Instantiate(bombEffect, pos, quaternion.identity);
         }
     }
 }

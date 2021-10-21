@@ -11,9 +11,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] 
     private float speed = 0.1f;
 
-    [SerializeField] 
-    private int liveCount;
-
     [SerializeField]
     private GameObject bombPre;
     
@@ -21,18 +18,19 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
     private SpriteRenderer sr;
     private Color color;
+    
     private bool canTakeDamage = true;
+
+    private int liveCount = 3;
+    private int bombRange = 1;
+    private float delayTime = 1.5f;
+    
     private void Awake()
     {
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         color = sr.color;
-    }
-    
-    void Start()
-    {
-        
     }
     
     void Update()
@@ -51,7 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!canTakeDamage) return;
         
-        if (other.CompareTag("Enemy") || other.CompareTag("BombEffect"))
+        if (other.CompareTag(GameObjectTag.Enemy) || other.CompareTag(GameObjectTag.BombEffect))
         {
             liveCount--;
             StartCoroutine("ShowDamageEffect", 2f);
@@ -79,7 +77,7 @@ public class PlayerController : MonoBehaviour
         {
             GameObject bomb = Instantiate(bombPre, new Vector2(Mathf.RoundToInt(transform.position.x), 
                 Mathf.RoundToInt(transform.position.y)), quaternion.identity);
-            bomb.GetComponent<BombBehaviour>().Init(2,1);
+            bomb.GetComponent<BombBehaviour>().Init(bombRange,delayTime);
         }
     }
 }

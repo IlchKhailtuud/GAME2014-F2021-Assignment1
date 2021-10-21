@@ -63,13 +63,13 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag(GameObjectTag.Enemy))
         {
             color.a = 0.3f;
             spriteRenderer.color = color;
         }
 
-        if (other.CompareTag("HardBrick") || other.CompareTag("DestructibleBrick"))
+        if (other.CompareTag(GameObjectTag.HardBrick) || other.CompareTag(GameObjectTag.DestructibleBrick))
         {
             //Reset enemy position to prevent it from jittering
             transform.position =
@@ -78,7 +78,7 @@ public class EnemyController : MonoBehaviour
             ChangeMoveDirection();
         }
 
-        if (other.CompareTag("BombEffect"))
+        if (other.CompareTag(GameObjectTag.BombEffect))
         {
             Destroy(gameObject);
         }
@@ -86,7 +86,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag(GameObjectTag.Enemy))
         {
             color.a = 1.0f;
             spriteRenderer.color = color;

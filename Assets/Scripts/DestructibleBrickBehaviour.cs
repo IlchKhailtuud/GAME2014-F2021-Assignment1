@@ -8,7 +8,7 @@ public class DestructibleBrickBehaviour : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("BombEffect"))
+        if (other.CompareTag(GameObjectTag.BombEffect))
         {
             Destroy(gameObject);
         }
