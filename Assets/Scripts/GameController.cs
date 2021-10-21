@@ -17,10 +17,4 @@ public class GameController : MonoBehaviour
         mapGennerator.InitMap();
         Instantiate(playerPre, mapGennerator.getPlayerSpawnPos(), quaternion.identity);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

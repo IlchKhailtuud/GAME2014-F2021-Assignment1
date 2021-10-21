@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] 
     private int liveCount;
+
+    [SerializeField]
+    private GameObject bombPre;
     
     private Animator anim;
     private Rigidbody2D rb2d;
@@ -39,6 +43,7 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("Vertical", v);
         
         rb2d.MovePosition(transform.position + new Vector3(h, v) * speed);
+        placeBomb();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -62,5 +67,14 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(0.25f);
         }
     }
-    
+
+    private void placeBomb()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject bomb = Instantiate(bombPre, new Vector2(Mathf.RoundToInt(transform.position.x), 
+                Mathf.RoundToInt(transform.position.y)), quaternion.identity);
+            bomb.GetComponent<BombBehaviour>().Init(2,1);
+        }
+    }
 }

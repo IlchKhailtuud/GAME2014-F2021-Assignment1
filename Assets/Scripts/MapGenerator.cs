@@ -141,6 +141,4 @@ public class MapGenerator : MonoBehaviour
     {
         return new Vector2(-(colCoordinate + 1), rowCoordinate + 1);
     }
-    
-    
 }
