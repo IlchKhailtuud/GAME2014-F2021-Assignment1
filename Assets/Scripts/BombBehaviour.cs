@@ -28,7 +28,11 @@ public class BombBehaviour : MonoBehaviour
     {
         for (int i = 1; i <= range; i++)
         {
-            Instantiate(explosionEffect, (Vector2)transform.position + explosionDirection * i, quaternion.identity);
+            Vector2 pos = (Vector2)transform.position + explosionDirection * i;
+
+            //stop spawning explosion effect once hits the hard brick
+            if (MapGenerator.instance.isHardBrick(pos)) break;
+            Instantiate(explosionEffect, pos, quaternion.identity);
         }
     }
 }
