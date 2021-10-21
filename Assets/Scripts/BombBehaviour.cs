@@ -17,11 +17,14 @@ public class BombBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
         Instantiate(explosionEffect, transform.position, quaternion.identity);
-        Explode(Vector2.left);
+        SpawnExplosion(Vector2.left);
+        SpawnExplosion(Vector2.right);
+        SpawnExplosion(Vector2.up);
+        SpawnExplosion(Vector2.down);
         Destroy(gameObject);
     }
 
-    private void Explode(Vector2 explosionDirection)
+    private void SpawnExplosion(Vector2 explosionDirection)
     {
         for (int i = 1; i <= range; i++)
         {

@@ -32,8 +32,25 @@ public class MapGenerator : MonoBehaviour
     private int enemyCount;
     
     private List<Vector2> emptyLocationList = new List<Vector2>();
-    private List<Vector2> destructibleWallList = new List<Vector2>();
+    private List<Vector2> destructibleBrickList = new List<Vector2>();
+    private List<Vector2> hardBrickList = new List<Vector2>();
 
+    public static MapGenerator instance;
+    private MapGenerator()
+    {
+        
+    }
+
+    //making MapGenerator singleton
+    public static MapGenerator Instance()
+    {
+        if (instance == null)
+        {
+            instance = new MapGenerator();
+        }
+        return instance;
+    }
+    
     public void InitMap()
     {
         GenerateHardWall();
@@ -50,20 +67,32 @@ public class MapGenerator : MonoBehaviour
         {
             for (int j = -rowCoordinate; j <= rowCoordinate; j += 2)
             {
-                GOInstantiate(hardBrick, new Vector2(i, j));
+                Vector2 pos = new Vector2(i, j);
+                GOInstantiate(hardBrick, pos);
+                hardBrickList.Add(pos);
             }
         }
         
         for (int i = -(colCoordinate + 2); i <= colCoordinate + 2; ++i)
         {
-            GOInstantiate(hardBrick,new Vector2(i, -(rowCoordinate + 2)));
-            GOInstantiate(hardBrick, new Vector2(i, rowCoordinate + 2));
+            Vector2 pos1 = new Vector2(i, -(rowCoordinate + 2));
+            GOInstantiate(hardBrick,pos1);
+            hardBrickList.Add(pos1);
+
+            Vector2 pos2 = new Vector2(i, rowCoordinate + 2);
+            GOInstantiate(hardBrick, pos2);
+            hardBrickList.Add(pos2);
         }
 
         for (int j = -(rowCoordinate + 2); j <= rowCoordinate + 2; ++j)
         {
-            GOInstantiate(hardBrick, new Vector3(-(colCoordinate + 2), j));
-            GOInstantiate(hardBrick, new Vector3(colCoordinate + 2, j));
+            Vector2 pos1 = new Vector2(-(colCoordinate + 2), j);
+            GOInstantiate(hardBrick, pos1);
+            hardBrickList.Add(pos1);
+
+            Vector2 pos2 = new Vector2(colCoordinate + 2, j);
+            GOInstantiate(hardBrick,pos2);
+            hardBrickList.Add(pos2);
         }
     }
 
@@ -92,6 +121,7 @@ public class MapGenerator : MonoBehaviour
             }
         }
         
+        //Save below positions for player spawn
         emptyLocationList.Remove(new Vector2(-(colCoordinate + 1), rowCoordinate + 1));
         emptyLocationList.Remove(new Vector2(-(colCoordinate + 1), rowCoordinate));
         emptyLocationList.Remove(new Vector2(-(colCoordinate), rowCoordinate + 1));
@@ -103,27 +133,27 @@ public class MapGenerator : MonoBehaviour
         {
             var ran = UnityEngine.Random.Range(0, emptyLocationList.Count);
             GOInstantiate(destructibleBrick, emptyLocationList[ran]);
-            destructibleWallList.Add(emptyLocationList[ran]);
+            destructibleBrickList.Add(emptyLocationList[ran]);
             emptyLocationList.RemoveAt(ran);
         }
     }
 
     private void CreatePortal()
     {
-        int index = UnityEngine.Random.Range(0, destructibleWallList.Count);
-        GOInstantiate(portalPre, destructibleWallList[index]);
-        destructibleWallList.RemoveAt(index);
+        int index = UnityEngine.Random.Range(0, destructibleBrickList.Count);
+        GOInstantiate(portalPre, destructibleBrickList[index]);
+        destructibleBrickList.RemoveAt(index);
     }
 
     private void CreateProp()
     {
-        int count = UnityEngine.Random.Range(0, 2 + (int)(destructibleWallList.Count * 0.05f));
+        int count = UnityEngine.Random.Range(0, 2 + (int)(destructibleBrickList.Count * 0.05f));
 
         for (int i = 0; i < count; i++)
         {
-            int index = UnityEngine.Random.Range(0, destructibleWallList.Count);
-            GOInstantiate(propPre, destructibleWallList[index]);
-            destructibleWallList.RemoveAt(index);
+            int index = UnityEngine.Random.Range(0, destructibleBrickList.Count);
+            GOInstantiate(propPre, destructibleBrickList[index]);
+            destructibleBrickList.RemoveAt(index);
         }
     }
 
@@ -140,5 +170,10 @@ public class MapGenerator : MonoBehaviour
     public Vector2 getPlayerSpawnPos()
     {
         return new Vector2(-(colCoordinate + 1), rowCoordinate + 1);
+    }
+    
+    public bool isHardBrick(Vector2 pos)
+    {
+        return hardBrickList.Contains(pos);
     }
 }

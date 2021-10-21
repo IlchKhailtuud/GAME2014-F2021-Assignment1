@@ -8,13 +8,25 @@ public class GameController : MonoBehaviour
     [SerializeField] 
     private GameObject playerPre;
 
-    private MapGenerator mapGennerator;
+    public static GameController instance;
+
+    private GameController()
+    {
+    }
     
-    // Start is called before the first frame update
     void Start()
     {
-        mapGennerator = GetComponent<MapGenerator>();
-        mapGennerator.InitMap();
-        Instantiate(playerPre, mapGennerator.getPlayerSpawnPos(), quaternion.identity);
+        MapGenerator.instance.InitMap();
+        Instantiate(playerPre, MapGenerator.instance.getPlayerSpawnPos(), quaternion.identity);
+    }
+
+    //making GameController singleton
+    public static GameController Instance()
+    {
+        if (instance == null)
+        {
+            instance = new GameController();
+        }
+        return instance;
     }
 }
