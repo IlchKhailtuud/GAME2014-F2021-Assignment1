@@ -8,8 +8,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] 
     private GameObject playerPre;
-
-    [SerializeField] 
+    
     private MapGenerator mapGenerator;
     
     public static GameController instance;

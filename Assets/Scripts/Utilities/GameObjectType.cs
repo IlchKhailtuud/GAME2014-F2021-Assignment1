@@ -9,5 +9,6 @@ public enum GameObjectType
     Enemy,
     Bomb,
     BombEffect,
-    Prop
+    Prop,
+    NUM_OF_TYPES
 }
