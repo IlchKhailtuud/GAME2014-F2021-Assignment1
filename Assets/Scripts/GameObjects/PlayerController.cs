@@ -10,9 +10,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] 
     private float speed = 0.1f;
-
-    [SerializeField]
-    private GameObject bombPre;
     
     private Animator anim;
     private Rigidbody2D rb2d;
@@ -52,11 +49,11 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag(GameObjectTag.Enemy) || other.CompareTag(GameObjectTag.BombEffect))
         {
             liveCount--;
-            StartCoroutine("ShowDamageEffect", 2f);
+            StartCoroutine("showDamageEffect", 2f);
         }
     }
 
-    IEnumerator ShowDamageEffect(float durationCount)
+    IEnumerator showDamageEffect(float durationCount)
     {
         canTakeDamage = false;
         for (int i = 0; i < durationCount * 2; i++)
@@ -75,8 +72,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject bomb = Instantiate(bombPre, new Vector2(Mathf.RoundToInt(transform.position.x), 
-                Mathf.RoundToInt(transform.position.y)), quaternion.identity);
+            GameObject bomb = ObjectManager.Instance().GetGameObject(new Vector2(Mathf.RoundToInt(transform.position.x),
+                Mathf.RoundToInt(transform.position.y)), GameObjectType.Bomb);
             bomb.GetComponent<BombBehaviour>().Init(bombRange,delayTime);
         }
     }

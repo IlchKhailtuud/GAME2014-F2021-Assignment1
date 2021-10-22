@@ -6,9 +6,6 @@ using UnityEngine.Serialization;
 
 public class BombBehaviour : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject bombEffect;
-    
     private int range;
     public void Init(int range, float delayTime)
     {
@@ -19,7 +16,7 @@ public class BombBehaviour : MonoBehaviour
     IEnumerator ExplosionDelay(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        Instantiate(bombEffect, transform.position, quaternion.identity);
+        GameObject bombeffect = ObjectManager.Instance().GetGameObject(transform.position, GameObjectType.BombEffect);
         SpawnExplosion(Vector2.left);
         SpawnExplosion(Vector2.right);
         SpawnExplosion(Vector2.up);
@@ -35,7 +32,7 @@ public class BombBehaviour : MonoBehaviour
 
             //stop spawning explosion effect once hits the hard brick
             if (GameController.instance.isHardBrick(pos)) break;
-            Instantiate(bombEffect, pos, quaternion.identity);
+            GameObject bombeffect = ObjectManager.Instance().GetGameObject(pos, GameObjectType.BombEffect);
         }
     }
 }

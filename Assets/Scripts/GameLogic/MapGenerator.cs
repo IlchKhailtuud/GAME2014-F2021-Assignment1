@@ -16,9 +16,6 @@ using Random = System.Random;
 
 public class MapGenerator: MonoBehaviour
 {
-    [SerializeField] 
-    private GameObject hardBrick, destructibleBrick, portalPre, propPre, enemyPre;
-    
     [SerializeField]
     private int colCoordinate;
     
@@ -32,7 +29,6 @@ public class MapGenerator: MonoBehaviour
     private int enemyCount;
     
     private List<Vector2> emptyLocationList = new List<Vector2>();
-    private List<Vector2> destructibleBrickList = new List<Vector2>();
     private List<Vector2> hardBrickList = new List<Vector2>();
     
     public void InitMap()
@@ -52,39 +48,37 @@ public class MapGenerator: MonoBehaviour
             for (int j = -rowCoordinate; j <= rowCoordinate; j += 2)
             {
                 Vector2 pos = new Vector2(i, j);
-                GOInstantiate(hardBrick, pos);
+                GameObject brick = ObjectManager.Instance().GetGameObject(pos, GameObjectType.HardBrick);
                 hardBrickList.Add(pos);
             }
         }
         
+        
+        //Generate bottom & top line of bricks
         for (int i = -(colCoordinate + 2); i <= colCoordinate + 2; ++i)
         {
             Vector2 pos1 = new Vector2(i, -(rowCoordinate + 2));
-            GOInstantiate(hardBrick,pos1);
+            GameObject brick1 = ObjectManager.Instance().GetGameObject(pos1,GameObjectType.HardBrick);
             hardBrickList.Add(pos1);
 
             Vector2 pos2 = new Vector2(i, rowCoordinate + 2);
-            GOInstantiate(hardBrick, pos2);
+            GameObject brick2 = ObjectManager.Instance().GetGameObject(pos2, GameObjectType.HardBrick);
             hardBrickList.Add(pos2);
         }
 
+        //generate left & right line of bricks
         for (int j = -(rowCoordinate + 2); j <= rowCoordinate + 2; ++j)
         {
             Vector2 pos1 = new Vector2(-(colCoordinate + 2), j);
-            GOInstantiate(hardBrick, pos1);
+            GameObject brick1 = ObjectManager.Instance().GetGameObject(pos1, GameObjectType.HardBrick);
             hardBrickList.Add(pos1);
 
             Vector2 pos2 = new Vector2(colCoordinate + 2, j);
-            GOInstantiate(hardBrick,pos2);
+            GameObject brick2 = ObjectManager.Instance().GetGameObject(pos2, GameObjectType.HardBrick);
             hardBrickList.Add(pos2);
         }
     }
-
-    private void GOInstantiate(GameObject go, Vector2 vec) 
-    {
-        Instantiate(go, vec, quaternion.identity);
-    }
-
+    
     private void GetAllEmptyLocations()
     {
         for (int i = -(colCoordinate + 1); i <= (colCoordinate + 1); ++i)
@@ -105,7 +99,7 @@ public class MapGenerator: MonoBehaviour
             }
         }
         
-        //Save below positions for player spawn
+        //Save positions below for player spawn
         emptyLocationList.Remove(new Vector2(-(colCoordinate + 1), rowCoordinate + 1));
         emptyLocationList.Remove(new Vector2(-(colCoordinate + 1), rowCoordinate));
         emptyLocationList.Remove(new Vector2(-(colCoordinate), rowCoordinate + 1));
@@ -115,29 +109,32 @@ public class MapGenerator: MonoBehaviour
     {
         for (int i = 0; i < destructibleBrickNum; ++i)
         {
-            var ran = UnityEngine.Random.Range(0, emptyLocationList.Count);
-            GOInstantiate(destructibleBrick, emptyLocationList[ran]);
-            destructibleBrickList.Add(emptyLocationList[ran]);
-            emptyLocationList.RemoveAt(ran);
+            var index = UnityEngine.Random.Range(0, emptyLocationList.Count);
+            var pos = emptyLocationList[index];
+            GameObject brick = ObjectManager.Instance().GetGameObject(pos, GameObjectType.DestructibleBrick);
+            emptyLocationList.RemoveAt(index);
         }
     }
 
     private void CreatePortal()
     {
-        int index = UnityEngine.Random.Range(0, destructibleBrickList.Count);
-        GOInstantiate(portalPre, destructibleBrickList[index]);
-        destructibleBrickList.RemoveAt(index);
+        var index = UnityEngine.Random.Range(0, emptyLocationList.Count);
+        var pos = emptyLocationList[index];
+        GameObject portal = ObjectManager.Instance().GetGameObject(pos, GameObjectType.Portal);
+        portal.transform.position = emptyLocationList[index];
+        emptyLocationList.RemoveAt(index);
     }
 
     private void CreateProp()
     {
-        int count = UnityEngine.Random.Range(0, 2 + (int)(destructibleBrickList.Count * 0.05f));
+        int count = UnityEngine.Random.Range(0, 2 + (int)(emptyLocationList.Count * 0.05f));
 
         for (int i = 0; i < count; i++)
         {
-            int index = UnityEngine.Random.Range(0, destructibleBrickList.Count);
-            GOInstantiate(propPre, destructibleBrickList[index]);
-            destructibleBrickList.RemoveAt(index);
+            var index = UnityEngine.Random.Range(0, emptyLocationList.Count);
+            var pos = emptyLocationList[index];
+            GameObject prop = ObjectManager.Instance().GetGameObject(pos, GameObjectType.Prop);
+            emptyLocationList.RemoveAt(index);
         }
     }
 
@@ -145,9 +142,10 @@ public class MapGenerator: MonoBehaviour
     {
         for (int i = 0; i < enemyCount; i++)
         {
-            var ran = UnityEngine.Random.Range(0, emptyLocationList.Count);
-            GOInstantiate(enemyPre, emptyLocationList[ran]);
-            emptyLocationList.RemoveAt(ran);
+            var index = UnityEngine.Random.Range(0, emptyLocationList.Count);
+            var pos = emptyLocationList[index];
+            GameObject enemy = ObjectManager.Instance().GetGameObject(pos, GameObjectType.Enemy);
+            emptyLocationList.RemoveAt(index);
         }
     }
 

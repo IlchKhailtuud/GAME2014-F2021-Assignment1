@@ -10,5 +10,6 @@ public enum GameObjectType
     Bomb,
     BombEffect,
     Prop,
+    Portal,
     NUM_OF_TYPES
 }

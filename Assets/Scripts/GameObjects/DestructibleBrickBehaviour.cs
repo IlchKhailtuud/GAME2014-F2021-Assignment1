@@ -10,7 +10,7 @@ public class DestructibleBrickBehaviour : MonoBehaviour
     {
         if (other.CompareTag(GameObjectTag.BombEffect))
         {
-            Destroy(gameObject);
+            ObjectManager.Instance().returnGameObject(gameObject, GameObjectType.DestructibleBrick);
         }
     }
 }

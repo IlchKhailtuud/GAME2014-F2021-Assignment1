@@ -6,6 +6,6 @@ public class BombEffect : MonoBehaviour
 {
     private void AnimFinished()
     {
-        Destroy(gameObject);
+        ObjectManager.Instance().returnGameObject(gameObject, GameObjectType.BombEffect);
     }
 }

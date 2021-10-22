@@ -959,7 +959,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPre: {fileID: 6906055942407787857, guid: 147aec1ed63db9249ac851ee6bcf6ec4, type: 3}
-  mapGenerator: {fileID: 0}
 --- !u!114 &1645125508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,11 +971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1af5020826598440b75e97c22b6c019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hardBrick: {fileID: 6745929640443408071, guid: 74ad2d45a00ba474390eee0d41b3b95d, type: 3}
-  destructibleBrick: {fileID: 3630128046267802617, guid: eef99399bc05ede4388bc4018b76f937, type: 3}
-  portalPre: {fileID: 323306575445985468, guid: d8327fe5d7ba9c34e93d790639072534, type: 3}
-  propPre: {fileID: 1651831677401928102, guid: 0a426be62f4c40d42b2c50935edb67c2, type: 3}
-  enemyPre: {fileID: 1702810165159907086, guid: dfc33227184763c40a4bc0955205e9c8, type: 3}
   colCoordinate: 6
   rowCoordinate: 3
   destructibleBrickNum: 15
@@ -1004,7 +998,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1645125506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a501af8e2d17c7549bdc381146386e18, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ee47441cb7d9814f97041cb303c6576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   typePrefabs:
