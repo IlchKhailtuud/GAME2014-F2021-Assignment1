@@ -37,10 +37,9 @@ public class ObjectFactory: MonoBehaviour
     public GameObject createGameObject(GameObjectType type)
     {
         GameObject prefab = getPrefabByType(type);
-        Instantiate(prefab);
-        //prefab.transform.parent = gameController.gameObject.transform;
+        Instantiate(prefab, gameController.transform); 
         prefab.SetActive(false);
-
+        
         return prefab;
     }
 }

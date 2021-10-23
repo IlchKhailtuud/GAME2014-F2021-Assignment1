@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Bomb
   - BombEffect
+  - Prop
+  - Portal
   layers:
   - Default
   - TransparentFX

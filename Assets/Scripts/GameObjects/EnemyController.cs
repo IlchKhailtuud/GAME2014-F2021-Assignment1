@@ -14,11 +14,10 @@ public class EnemyController : MonoBehaviour
     private Vector2 directionVec;
     private bool canMove;
 
-    [SerializeField] 
-    private float speed;
-    
+    [SerializeField] private float speed;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -80,7 +79,7 @@ public class EnemyController : MonoBehaviour
 
         if (other.CompareTag(GameObjectTag.BombEffect))
         {
-            Destroy(gameObject);
+            ObjectManager.Instance().returnGameObject(gameObject, GameObjectType.Enemy);
         }
     }
 

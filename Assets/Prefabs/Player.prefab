@@ -156,4 +156,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
-  bombPre: {fileID: 5944913991465810009, guid: a16637d8f3acbc049812ceab26ef3c37, type: 3}
+  bomb: {fileID: 5944913991465810009, guid: a16637d8f3acbc049812ceab26ef3c37, type: 3}

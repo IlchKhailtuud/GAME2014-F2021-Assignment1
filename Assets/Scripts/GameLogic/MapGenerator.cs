@@ -127,8 +127,8 @@ public class MapGenerator: MonoBehaviour
 
     private void CreateProp()
     {
-        int count = UnityEngine.Random.Range(0, 2 + (int)(emptyLocationList.Count * 0.05f));
-
+        //int count = UnityEngine.Random.Range(0, 2 + (int)(emptyLocationList.Count * 0.05f));
+        int count = 5;
         for (int i = 0; i < count; i++)
         {
             var index = UnityEngine.Random.Range(0, emptyLocationList.Count);
@@ -148,7 +148,7 @@ public class MapGenerator: MonoBehaviour
             emptyLocationList.RemoveAt(index);
         }
     }
-
+    
     public Vector2 getPlayerSpawnPos()
     {
         return new Vector2(-(colCoordinate + 1), rowCoordinate + 1);

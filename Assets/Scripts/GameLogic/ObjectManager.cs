@@ -100,7 +100,7 @@ public class ObjectManager
         {
             AddGameObject(type);
         }
-    
+        
         temp_go = objectPool[(int)type].Dequeue();
         temp_go.transform.position = spawnPos;
         temp_go.SetActive(true);

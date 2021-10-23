@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] 
     private float speed = 0.1f;
+
+    public GameObject bomb;
     
     private Animator anim;
     private Rigidbody2D rb2d;
@@ -18,8 +20,12 @@ public class PlayerController : MonoBehaviour
     
     private bool canTakeDamage = true;
 
+    
     private int liveCount = 3;
+    private float bombCD = 1.0f;
+    private int bombCount = 1;
     private int bombRange = 1;
+    private bool canPlaceBomb = true;
     private float delayTime = 1.5f;
     
     private void Awake()
@@ -68,13 +74,32 @@ public class PlayerController : MonoBehaviour
         canTakeDamage = true;
     }
 
+    //prevent player from spamming bomb button
+    IEnumerator startCoolDown(float cooldown)
+    {
+        yield return new WaitForSeconds(cooldown);
+        canPlaceBomb = true;
+    }
+
+    private void BombExplosionFinished()
+    {
+        bombCount++;
+    }
+    
     private void placeBomb()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canPlaceBomb == true && bombCount > 0)
         {
-            GameObject bomb = ObjectManager.Instance().GetGameObject(new Vector2(Mathf.RoundToInt(transform.position.x),
-                Mathf.RoundToInt(transform.position.y)), GameObjectType.Bomb);
-            bomb.GetComponent<BombBehaviour>().Init(bombRange,delayTime);
+            // ObjectManager.Instance().GetGameObject(new Vector2(Mathf.RoundToInt(transform.position.x),
+            //      Mathf.RoundToInt(transform.position.y)), GameObjectType.Bomb);
+            //
+            // bomb.GetComponent<BombBehaviour>().Init(bombRange,delayTime);
+            bombCount--;
+            GameObject go = Instantiate(bomb, new Vector2(Mathf.RoundToInt(gameObject.transform.position.x),
+                Mathf.RoundToInt(gameObject.transform.position.y)), quaternion.identity);
+            go.GetComponent<BombBehaviour>().Init(bombRange,delayTime, BombExplosionFinished);
+            canPlaceBomb = false;
+            StartCoroutine("startCoolDown", bombCD);
         }
     }
 }
