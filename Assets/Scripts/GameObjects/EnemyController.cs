@@ -73,12 +73,12 @@ public class EnemyController : MonoBehaviour
             //Reset enemy position to prevent it from jittering
             transform.position =
                 new Vector2(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
-            
             ChangeMoveDirection();
         }
 
         if (other.CompareTag(GameObjectTag.BombEffect))
         {
+            GameController.instance.enemyCount--;
             ObjectManager.Instance().returnGameObject(gameObject, GameObjectType.Enemy);
         }
     }

@@ -21,24 +21,18 @@ public class MapGenerator: MonoBehaviour
     
     [SerializeField]
     private int rowCoordinate;
-
-    [SerializeField] 
-    private int destructibleBrickNum;
-
-    [SerializeField] 
-    private int enemyCount;
     
     private List<Vector2> emptyLocationList = new List<Vector2>();
     private List<Vector2> hardBrickList = new List<Vector2>();
     
-    public void InitMap()
+    public void InitMap(int propCount, int enemyCount)
     {
         GenerateHardWall();
         GetAllEmptyLocations();
         GenerateDestructibleWall();
         CreatePortal();
-        CreateProp();
-        SpawnEnemy();
+        CreateProp(propCount);
+        SpawnEnemy(enemyCount);
     }
     
     private void GenerateHardWall()
@@ -107,6 +101,7 @@ public class MapGenerator: MonoBehaviour
 
     private void GenerateDestructibleWall()
     {
+        int destructibleBrickNum = (int)(emptyLocationList.Count * 0.4f);
         for (int i = 0; i < destructibleBrickNum; ++i)
         {
             var index = UnityEngine.Random.Range(0, emptyLocationList.Count);
@@ -125,11 +120,10 @@ public class MapGenerator: MonoBehaviour
         emptyLocationList.RemoveAt(index);
     }
 
-    private void CreateProp()
+    private void CreateProp(int propCount)
     {
-        //int count = UnityEngine.Random.Range(0, 2 + (int)(emptyLocationList.Count * 0.05f));
         int count = 5;
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < propCount; i++)
         {
             var index = UnityEngine.Random.Range(0, emptyLocationList.Count);
             var pos = emptyLocationList[index];
@@ -138,7 +132,7 @@ public class MapGenerator: MonoBehaviour
         }
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy(int enemyCount)
     {
         for (int i = 0; i < enemyCount; i++)
         {

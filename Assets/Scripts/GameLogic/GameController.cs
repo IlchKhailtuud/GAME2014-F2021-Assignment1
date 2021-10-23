@@ -12,7 +12,10 @@ public class GameController : MonoBehaviour
     private MapGenerator mapGenerator;
     
     public static GameController instance;
-
+    
+    private int propCount = 5;
+    public int enemyCount = 4;
+    
     private void Awake()
     {
         instance = this;
@@ -21,7 +24,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         mapGenerator = GetComponent<MapGenerator>();
-        mapGenerator.InitMap();
+        mapGenerator.InitMap(propCount, enemyCount);
         Instantiate(playerPre, mapGenerator.getPlayerSpawnPos(), quaternion.identity);
     }
 

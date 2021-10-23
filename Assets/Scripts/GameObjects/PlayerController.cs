@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     //player properties
     private int liveCount = 3;
     private float speed = 0.1f;
-    private float bombCD = 1.0f;
+    private float bombCD = 0.5f;
     private int bombCount = 1;
     private int bombRange = 1;
     private bool canPlaceBomb = true;

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PortalBehaviour : MonoBehaviour
 {
@@ -28,14 +29,17 @@ public class PortalBehaviour : MonoBehaviour
 
         if (other.CompareTag(GameObjectTag.Player))
         {
-            
-            reset();
-            ObjectManager.Instance().returnGameObject(gameObject, GameObjectType.Portal);
+            if (GameController.instance.enemyCount <= 0)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("win", LoadSceneMode.Single);
+                Reset();
+                ObjectManager.Instance().returnGameObject(gameObject, GameObjectType.Portal);
+            }
         }
     }
 
     //reset portal properties after returning to the object pool
-    private void reset()
+    private void Reset()
     {
         tag = GameObjectTag.DestructibleBrick;
         sr.sprite = defaultSp;
