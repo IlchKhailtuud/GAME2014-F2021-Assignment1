@@ -20,7 +20,7 @@ public class PortalBehaviour : MonoBehaviour
     {
         if (other.CompareTag(GameObjectTag.BombEffect))
         {
-            tag = "Portal";
+            tag = GameObjectTag.Portal;
             
             sr.sprite = portalSprite;
             col.isTrigger = true;
@@ -37,7 +37,7 @@ public class PortalBehaviour : MonoBehaviour
     //reset portal properties after returning to the object pool
     private void reset()
     {
-        tag = "Brick";
+        tag = GameObjectTag.DestructibleBrick;
         sr.sprite = defaultSp;
         col.isTrigger = false;
     }

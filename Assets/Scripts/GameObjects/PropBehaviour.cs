@@ -21,7 +21,7 @@ public class PropBehaviour : MonoBehaviour
         if (other.CompareTag(GameObjectTag.BombEffect))
         {
             //disbale collision between the enemeies and props after props are revealed
-            tag = "Prop";
+            tag = GameObjectTag.Prop;
             
             GetComponent<Collider2D>().isTrigger = true;
             int index = UnityEngine.Random.Range(0, propSpArr.Length);
@@ -33,24 +33,10 @@ public class PropBehaviour : MonoBehaviour
 
         if (other.CompareTag(GameObjectTag.Player))
         {
-            switch (propType)
-            {
-                case PropType.Hp:
-                    
-                    break;
-                case PropType.Bomb:
-                    
-                    break;
-                case PropType.Range:
-                    
-                    break;
-                case PropType.Speed:
-                    
-                    break;
-                case PropType.Time:
-                    
-                    break;
-            }
+            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+            
+            playerController.StatusBoost((int)propType);
+            
             reset();
             ObjectManager.Instance().returnGameObject(gameObject, GameObjectType.Prop);
         }
@@ -60,7 +46,7 @@ public class PropBehaviour : MonoBehaviour
     private void reset()
     {
         sr.sprite = defaultSp;
-        tag = "Brick";
+        tag = GameObjectTag.DestructibleBrick;
         GetComponent<Collider2D>().isTrigger = false;
     }
 

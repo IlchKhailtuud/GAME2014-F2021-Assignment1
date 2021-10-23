@@ -10,4 +10,6 @@ public class GameObjectTag
     public const string Enemy = "Enemy";
     public const string Bomb = "Bomb";
     public const string BombEffect = "BombEffect";
+    public const string Prop = "Prop";
+    public const string Portal = "Portal";
 }

@@ -8,8 +8,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] 
-    private float speed = 0.1f;
+    
 
     public GameObject bomb;
     
@@ -20,8 +19,9 @@ public class PlayerController : MonoBehaviour
     
     private bool canTakeDamage = true;
 
-    
+    //player properties
     private int liveCount = 3;
+    private float speed = 0.1f;
     private float bombCD = 1.0f;
     private int bombCount = 1;
     private int bombRange = 1;
@@ -80,11 +80,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         canPlaceBomb = true;
     }
-
-    private void BombExplosionFinished()
-    {
-        bombCount++;
-    }
     
     private void placeBomb()
     {
@@ -94,12 +89,45 @@ public class PlayerController : MonoBehaviour
             //      Mathf.RoundToInt(transform.position.y)), GameObjectType.Bomb);
             //
             // bomb.GetComponent<BombBehaviour>().Init(bombRange,delayTime);
+            
             bombCount--;
+            
             GameObject go = Instantiate(bomb, new Vector2(Mathf.RoundToInt(gameObject.transform.position.x),
                 Mathf.RoundToInt(gameObject.transform.position.y)), quaternion.identity);
-            go.GetComponent<BombBehaviour>().Init(bombRange,delayTime, BombExplosionFinished);
+            go.GetComponent<BombBehaviour>().Init(bombRange,delayTime, ()=>
+            {
+                bombCount++;
+            });
+            
             canPlaceBomb = false;
             StartCoroutine("startCoolDown", bombCD);
         }
+    }
+
+    public void StatusBoost(int prop)
+    {
+        switch (prop)
+        {
+           case 0:
+               liveCount++;
+               break;
+           case 1:
+               speedBoost();
+               break;
+           case 2:
+               bombCount++;
+               break;
+           case 3:
+               bombRange++;
+               break;
+        }
+    }
+    
+    private void speedBoost()
+    {
+        speed += 0.03f;
+
+        if (speed > 1.5f)
+            speed = 1.5f;
     }
 }
