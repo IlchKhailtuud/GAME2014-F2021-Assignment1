@@ -96,6 +96,7 @@ public class EnemyController : MonoBehaviour
     {
         List<int> directionList = new List<int>();
         
+        //spawn raycast into 4 directions to determine which direction has not obstacles(hardbrick)
         if (!Physics2D.Raycast(transform.position, Vector2.up, 0.65f, 1 << 6))
         {
             directionList.Add(0);

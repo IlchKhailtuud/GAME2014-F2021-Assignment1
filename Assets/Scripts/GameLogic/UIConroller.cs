@@ -13,8 +13,7 @@ public class UIConroller : MonoBehaviour
     {
         instance = this;
     }
-
-    //update UI texts
+    
     public void UIUpdate(int live, int enemy, int time)
     {
         liveTxt.text = "LIVE: " + live.ToString();

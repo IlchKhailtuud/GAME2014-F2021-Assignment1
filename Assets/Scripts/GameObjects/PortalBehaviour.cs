@@ -31,6 +31,7 @@ public class PortalBehaviour : MonoBehaviour
         {
             if (GameController.instance.getEnemyCount() <= 0)
             {
+                //handle win state 
                 UnityEngine.SceneManagement.SceneManager.LoadScene("win", LoadSceneMode.Single);
                 Reset();
                 ObjectManager.Instance().returnGameObject(gameObject, GameObjectType.Portal);

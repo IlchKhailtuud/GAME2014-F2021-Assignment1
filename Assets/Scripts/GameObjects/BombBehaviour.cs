@@ -24,6 +24,8 @@ public class BombBehaviour : MonoBehaviour
         if (explosionAct != null) explosionAct();
         
         ObjectManager.Instance().GetGameObject(transform.position, GameObjectType.BombEffect);
+        
+        //spawn explosion effect in four directions
         SpawnExplosion(Vector2.left);
         SpawnExplosion(Vector2.right);
         SpawnExplosion(Vector2.up);

@@ -50,6 +50,7 @@ public class PropBehaviour : MonoBehaviour
         GetComponent<Collider2D>().isTrigger = false;
     }
 
+    //make the prop sparkle when revealed
     IEnumerator PlayAnim()
     {
         for (int i = 0; i < 2; i++)

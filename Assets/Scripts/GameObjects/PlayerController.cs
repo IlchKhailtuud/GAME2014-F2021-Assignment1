@@ -9,8 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    
-
     public GameObject bomb;
     
     private Animator anim;
@@ -28,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private int bombRange = 1;
     private bool canPlaceBomb = true;
     private float delayTime = 1.5f;
+
+    private bool dieAnimFninished = false;
     
     private void Awake()
     {
@@ -55,17 +55,17 @@ public class PlayerController : MonoBehaviour
         
         if (other.CompareTag(GameObjectTag.Enemy) || other.CompareTag(GameObjectTag.BombEffect))
         {
-            //handle gameover state
+            //handle game over state
             if (--liveCount <= 0)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("end", LoadSceneMode.Single);
-                return;
+                DieAnim();
             }
 
             StartCoroutine("showDamageEffect", 2f);
         }
     }
 
+    //make the player sprite flikcer when take damage & set a short time period of invincibility 
     IEnumerator showDamageEffect(float durationCount)
     {
         canTakeDamage = false;
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
         canTakeDamage = true;
     }
 
-    //prevent player from spamming bomb button
+    //set a cooldown timer after placing a bomb to prevent player from spamming the bomb button
     IEnumerator startCoolDown(float cooldown)
     {
         yield return new WaitForSeconds(cooldown);
@@ -92,15 +92,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && canPlaceBomb == true && bombCount > 0)
         {
-            // ObjectManager.Instance().GetGameObject(new Vector2(Mathf.RoundToInt(transform.position.x),
-            //      Mathf.RoundToInt(transform.position.y)), GameObjectType.Bomb);
-            //
-            // bomb.GetComponent<BombBehaviour>().Init(bombRange,delayTime);
-            
             bombCount--;
             
             GameObject go = Instantiate(bomb, new Vector2(Mathf.RoundToInt(gameObject.transform.position.x),
                 Mathf.RoundToInt(gameObject.transform.position.y)), quaternion.identity);
+            
+            //using Unity.Action to notify player when the bomb explodes
             go.GetComponent<BombBehaviour>().Init(bombRange,delayTime, ()=>
             {
                 bombCount++;
@@ -110,7 +107,8 @@ public class PlayerController : MonoBehaviour
             StartCoroutine("startCoolDown", bombCD);
         }
     }
-
+    
+    //select status boost by PropType enum
     public void StatusBoost(int prop)
     {
         switch (prop)
@@ -136,6 +134,17 @@ public class PlayerController : MonoBehaviour
 
         if (speed > 1.5f)
             speed = 1.5f;
+    }
+
+    public void DieAnim()
+    {
+        anim.SetTrigger("Die");
+    }
+    
+    //Load end scene after playing die animation
+    private void DieAnimFinished()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("end", LoadSceneMode.Single);
     }
 
     public int getLiveCount()

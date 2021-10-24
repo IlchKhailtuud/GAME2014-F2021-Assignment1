@@ -122,7 +122,6 @@ public class MapGenerator: MonoBehaviour
 
     private void CreateProp(int propCount)
     {
-        int count = 5;
         for (int i = 0; i < propCount; i++)
         {
             var index = UnityEngine.Random.Range(0, emptyLocationList.Count);
@@ -148,6 +147,7 @@ public class MapGenerator: MonoBehaviour
         return new Vector2(-(colCoordinate + 1), rowCoordinate + 1);
     }
     
+    //if certain position has spawned harbrick
     public bool isHardBrick(Vector2 pos)
     {
         return hardBrickList.Contains(pos);

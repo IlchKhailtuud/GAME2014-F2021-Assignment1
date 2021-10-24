@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         countdownTimer();
-        UIConroller.instance.UIUpdate(playerController.liveCount, enemyCount, timeLeft);
+        UIConroller.instance.UIUpdate(playerController.getLiveCount(), enemyCount, timeLeft);
     }
 
     public bool isHardBrick(Vector2 pos)
@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
 
         if (timeLeft <= 0)
         {
-            Time.timeScale = 0;
+            playerController.DieAnim();
         }
 
         if (timer >= 1.0f)
