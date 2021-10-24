@@ -3,9 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="59dc5e11-4ffd-49bd-a879-6c3e79f3af20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GAME2014-F2021-Assignment1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GAME2014-F2021-Assignment1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameLogic/AudioEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameLogic/AudioEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameLogic/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameLogic/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameLogic/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameLogic/MapGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameObjects/BombBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameObjects/BombBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameObjects/BombEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameObjects/BombEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameObjects/DestructibleBrickBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameObjects/DestructibleBrickBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameObjects/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameObjects/EnemyController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameObjects/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameObjects/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameObjects/PortalBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameObjects/PortalBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameObjects/PropBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameObjects/PropBehaviour.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,16 +23,23 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/Downloads/Assignment1-Part2-NegarSaeidi-main/Assignment1-Part2-NegarSaeidi-main/Assets/[Scripts]/ObjectFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/GAME-2014_A1-main/GAME-2014_A1-main/GAME-2014_A1/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.6.1/Runtime/VisualScripting.Core/Ensure/EnsureThat.Objects.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Assignment1-Part2-NegarSaeidi-main/Assignment1-Part2-NegarSaeidi-main/Assets/[Scripts]/BloodController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Assignment1-Part2-NegarSaeidi-main/Assignment1-Part2-NegarSaeidi-main/Assets/[Scripts]/sceneContoller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/08/f8e93202/Int32.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Assignment1-Part2-NegarSaeidi-main/Assignment1-Part2-NegarSaeidi-main/Assets/[Scripts]/carMovement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7f0a900fdf94a2a9316bb3d4c5aa3e8144200/7b/7bdf173d/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Assignment1-Part2-NegarSaeidi-main/Assignment1-Part2-NegarSaeidi-main/Assets/[Scripts]/CatGenerator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/ObjectManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/PropTypeSPrite.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../Labs/GAME2014-F2021-Lab4/Assets/[Scripts]/Bullet Scripts/BulletManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.6.1/Runtime/VisualScripting.Core/Ensure/EnsureThat.Objects.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Assignment1-Part2-NegarSaeidi-main/Assignment1-Part2-NegarSaeidi-main/Assets/[Scripts]/FuelGenerator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7f0a900fdf94a2a9316bb3d4c5aa3e8144200/6b/7adbcb9f/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.6.1/Runtime/VisualScripting.Core/Unity/Singleton.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/08/f8e93202/Int32.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7f0a900fdf94a2a9316bb3d4c5aa3e8144200/7b/7bdf173d/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7f0a900fdf94a2a9316bb3d4c5aa3e8144200/33/8dceaaac/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/AudioEffect.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameLogic/ObjectManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/36/02b85da6/List`1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -111,7 +125,7 @@
       <workItem from="1634952109224" duration="4359000" />
       <workItem from="1635005951651" duration="21063000" />
       <workItem from="1635047140492" duration="2544000" />
-      <workItem from="1635085210508" duration="1242000" />
+      <workItem from="1635085210508" duration="5230000" />
     </task>
     <servers />
   </component>

@@ -5,6 +5,14 @@ using Unity.VisualScripting;
 using UnityEditor.UIElements;
 using UnityEngine;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//FileName: SceneManager.cs
+//Author: Yiliqi
+//Student Number: 101289355
+//Last Modified On : 10/2/2021
+//Description : Class for object pooling
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 public class ObjectManager
 {
     private static ObjectManager instance;
@@ -60,11 +68,6 @@ public class ObjectManager
     {
         go.SetActive(false);
         objectPool[(int)type].Enqueue(go);
-    }
-
-    public void OnSceneTransition()
-    {
-        
     }
 }
 

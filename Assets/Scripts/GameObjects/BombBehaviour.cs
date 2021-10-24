@@ -5,6 +5,14 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//FileName: MapGenerator.cs
+//Author: Yiliqi
+//Student Number: 101289355
+//Last Modified On : 10/24/2021
+//Description : Class for bomb explosion & spawning explosion effect
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 public class BombBehaviour : MonoBehaviour
 {
     private int range;

@@ -8,5 +8,4 @@ public enum PropType
     Speed, //speed boost
     Bomb, //bomb + 1
     Range, //range + 1
-    Time //time + 30s
 }

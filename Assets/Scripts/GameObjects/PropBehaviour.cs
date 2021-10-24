@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//FileName: MapGenerator.cs
+//Author: Yiliqi
+//Student Number: 101289355
+//Last Modified On : 10/24/2021
+//Description : Class for prop interaction with the player & bomb effect
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 public class PropBehaviour : MonoBehaviour
 {
     public PropTypeSprite[] propSpArr;

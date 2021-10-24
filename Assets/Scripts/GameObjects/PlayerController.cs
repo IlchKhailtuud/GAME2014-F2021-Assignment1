@@ -7,6 +7,14 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//FileName: MapGenerator.cs
+//Author: Yiliqi
+//Student Number: 101289355
+//Last Modified On : 10/24/2021
+//Description : Class for handling player movement, placing bomb, taking damages & fail state
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 public class PlayerController : MonoBehaviour
 {
     public GameObject bomb;

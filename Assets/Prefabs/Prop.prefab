@@ -132,5 +132,3 @@ MonoBehaviour:
     sp: {fileID: -6541916342287759255, guid: 1af08eeda01d30e419de5657a3da009d, type: 3}
   - type: 3
     sp: {fileID: 7305353108447693555, guid: 1af08eeda01d30e419de5657a3da009d, type: 3}
-  - type: 4
-    sp: {fileID: 6805428983234042088, guid: 1af08eeda01d30e419de5657a3da009d, type: 3}

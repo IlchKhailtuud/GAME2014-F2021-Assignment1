@@ -1,3 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //FileName: SceneManager.cs
 //Author: Yiliqi
@@ -5,10 +10,6 @@
 //Last Modified On : 10/2/2021
 //Description : Class for scene transitions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {

@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//FileName: MapGenerator.cs
+//Author: Yiliqi
+//Student Number: 101289355
+//Last Modified On : 10/24/2021
+//Description : Class for handling portal interaction with bomb effect & the player & wins state
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 public class PortalBehaviour : MonoBehaviour
 {
     public Sprite portalSprite;

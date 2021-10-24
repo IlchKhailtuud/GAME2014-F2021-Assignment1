@@ -5,6 +5,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = System.Random;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//FileName: MapGenerator.cs
+//Author: Yiliqi
+//Student Number: 101289355
+//Last Modified On : 10/24/2021
+//Description : Class for handling enemy movement & interaction with the player & bricks
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 public class EnemyController : MonoBehaviour
 {
     private Rigidbody2D rb2d;
