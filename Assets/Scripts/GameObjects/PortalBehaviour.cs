@@ -29,7 +29,7 @@ public class PortalBehaviour : MonoBehaviour
 
         if (other.CompareTag(GameObjectTag.Player))
         {
-            if (GameController.instance.enemyCount <= 0)
+            if (GameController.instance.getEnemyCount() <= 0)
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene("win", LoadSceneMode.Single);
                 Reset();

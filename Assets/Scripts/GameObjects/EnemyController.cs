@@ -78,7 +78,7 @@ public class EnemyController : MonoBehaviour
 
         if (other.CompareTag(GameObjectTag.BombEffect))
         {
-            GameController.instance.enemyCount--;
+            GameController.instance.defeatEnemy();
             ObjectManager.Instance().returnGameObject(gameObject, GameObjectType.Enemy);
         }
     }

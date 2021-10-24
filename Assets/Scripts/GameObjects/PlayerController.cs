@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private bool canTakeDamage = true;
 
     //player properties
-    private int liveCount = 3;
+    public int liveCount = 3;
     private float speed = 0.1f;
     private float bombCD = 0.5f;
     private int bombCount = 1;
@@ -54,7 +55,13 @@ public class PlayerController : MonoBehaviour
         
         if (other.CompareTag(GameObjectTag.Enemy) || other.CompareTag(GameObjectTag.BombEffect))
         {
-            liveCount--;
+            //handle gameover state
+            if (--liveCount <= 0)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("end", LoadSceneMode.Single);
+                return;
+            }
+
             StartCoroutine("showDamageEffect", 2f);
         }
     }
@@ -129,5 +136,10 @@ public class PlayerController : MonoBehaviour
 
         if (speed > 1.5f)
             speed = 1.5f;
+    }
+
+    public int getLiveCount()
+    {
+        return liveCount;
     }
 }
