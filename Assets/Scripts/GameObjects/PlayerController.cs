@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && canPlaceBomb == true && bombCount > 0)
         {
+            AudioEffect.instance.PlayPlaceBomb();
             bombCount--;
             
             GameObject go = Instantiate(bomb, new Vector2(Mathf.RoundToInt(gameObject.transform.position.x),

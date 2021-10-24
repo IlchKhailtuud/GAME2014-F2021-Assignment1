@@ -23,6 +23,8 @@ public class BombBehaviour : MonoBehaviour
         //notify player script that the bomb has exploded
         if (explosionAct != null) explosionAct();
         
+        AudioEffect.instance.PlayExplosion();
+        
         ObjectManager.Instance().GetGameObject(transform.position, GameObjectType.BombEffect);
         
         //spawn explosion effect in four directions
