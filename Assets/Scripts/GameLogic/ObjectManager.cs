@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor.UIElements;
 using UnityEngine;
 
-public class ObjectManager:MonoBehaviour
+public class ObjectManager
 {
     private static ObjectManager instance;
     private List<Queue<GameObject>> objectPool;
