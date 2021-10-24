@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor.UIElements;
 using UnityEngine;
 
-public class ObjectManager
+public class ObjectManager:MonoBehaviour
 {
     private static ObjectManager instance;
     private List<Queue<GameObject>> objectPool;
@@ -60,6 +60,11 @@ public class ObjectManager
     {
         go.SetActive(false);
         objectPool[(int)type].Enqueue(go);
+    }
+
+    public void OnSceneTransition()
+    {
+        
     }
 }
 

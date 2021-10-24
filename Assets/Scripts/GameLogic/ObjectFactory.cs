@@ -40,6 +40,9 @@ public class ObjectFactory: MonoBehaviour
         Instantiate(prefab, gameController.transform); 
         prefab.SetActive(false);
         
+        //preserve game objects in object pool across scenes
+        DontDestroyOnLoad(prefab);
+        
         return prefab;
     }
 }
